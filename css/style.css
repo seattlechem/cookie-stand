@@ -2,10 +2,12 @@
 /* A specified standard serif web font for text (such as Georgia, Times, etc.) */
 
 
-
 html, body {
   background-color: #ebeced;
 
+}
+nav, ul, li, section, footer {
+  border: 1px dotted;
 }
 
 ul {
