@@ -185,12 +185,20 @@ var alki =
   avgCookieSales: 4.6,
   totalCookies: 0,
   cookiesHourlySales: [],
+  
+  randomCookiesNum: function()
+  {
+    var min = Math.ceil(this.minCustPerHour * this.avgCookieSales);
+    var max = Math.floor(this.maxCustPerHour * this.avgCookieSales);
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+
   render: function()
   {
     //add hourly cookies sales into array
     for(var i = 0; i < hours.length; i++)
     {
-      var numCookies = getRandomInt(this.minCustPerHour * this.avgCookieSales, this.maxCustPerHour * this.avgCookieSales);
+      var numCookies = this.randomCookiesNum();
       this.cookiesHourlySales.push(numCookies);
       this.totalCookies += numCookies;
     }
