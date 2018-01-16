@@ -1,8 +1,4 @@
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 var firstAndPike =
@@ -12,12 +8,20 @@ var firstAndPike =
   avgCookieSales: 6.3,
   totalCookies: 0,
   cookiesHourlySales: [],
+
+  randomCookiesNum: function()
+  {
+    var min = Math.ceil(this.minCustPerHour * this.avgCookieSales);
+    var max = Math.floor(this.maxCustPerHour * this.avgCookieSales);
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+
   render: function()
   {
     //add hourly cookies sales into array
     for(var i = 0; i < hours.length; i++)
     {
-      var numCookies = getRandomInt(this.minCustPerHour * this.avgCookieSales, this.maxCustPerHour * this.avgCookieSales);
+      var numCookies = this.randomCookiesNum();
       this.cookiesHourlySales.push(numCookies);
       this.totalCookies += numCookies;
     }
@@ -49,12 +53,20 @@ var seaTacAirport =
   avgCookieSales: 1.2,
   totalCookies: 0,
   cookiesHourlySales: [],
+
+  randomCookiesNum: function()
+  {
+    var min = Math.ceil(this.minCustPerHour * this.avgCookieSales);
+    var max = Math.floor(this.maxCustPerHour * this.avgCookieSales);
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+
   render: function()
   {
     //add hourly cookies sales into array
     for(var i = 0; i < hours.length; i++)
     {
-      var numCookies = getRandomInt(this.minCustPerHour * this.avgCookieSales, this.maxCustPerHour * this.avgCookieSales);
+      var numCookies = this.randomCookiesNum();
       this.cookiesHourlySales.push(numCookies);
       this.totalCookies += numCookies;
     }
@@ -85,12 +97,20 @@ var seattleCenter =
   avgCookieSales: 3.7,
   totalCookies: 0,
   cookiesHourlySales: [],
+
+  randomCookiesNum: function()
+  {
+    var min = Math.ceil(this.minCustPerHour * this.avgCookieSales);
+    var max = Math.floor(this.maxCustPerHour * this.avgCookieSales);
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+
   render: function()
   {
     //add hourly cookies sales into array
     for(var i = 0; i < hours.length; i++)
     {
-      var numCookies = getRandomInt(this.minCustPerHour * this.avgCookieSales, this.maxCustPerHour * this.avgCookieSales);
+      var numCookies = this.randomCookiesNum();
       this.cookiesHourlySales.push(numCookies);
       this.totalCookies += numCookies;
     }
@@ -121,12 +141,20 @@ var capitolHill =
   avgCookieSales: 2.3,
   totalCookies: 0,
   cookiesHourlySales: [],
+
+  randomCookiesNum: function()
+  {
+    var min = Math.ceil(this.minCustPerHour * this.avgCookieSales);
+    var max = Math.floor(this.maxCustPerHour * this.avgCookieSales);
+    return Math.floor(Math.random() * (max - min)) + min;
+  },
+
   render: function()
   {
     //add hourly cookies sales into array
     for(var i = 0; i < hours.length; i++)
     {
-      var numCookies = getRandomInt(this.minCustPerHour * this.avgCookieSales, this.maxCustPerHour * this.avgCookieSales);
+      var numCookies = this.randomCookiesNum();
       this.cookiesHourlySales.push(numCookies);
       this.totalCookies += numCookies;
     }
