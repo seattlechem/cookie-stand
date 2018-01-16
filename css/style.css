@@ -6,8 +6,20 @@ html, body {
   background-color: #ebeced;
 
 }
-nav, ul, li, section, footer {
+nav, section, header, footer {
   border: 1px dotted;
+  width: 800px;
+  margin: 10px 0px 10px 50px;
+}
+
+
+nav > ul {
+  display: inline;
+}
+.navMenu {
+  display: inline;  
+  padding-right: .6em;
+  background-position: 100% .4em;
 }
 
 ul {
