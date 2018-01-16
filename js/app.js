@@ -30,7 +30,7 @@ Store.prototype.storeRandomNumCookiesIntoArray = function(){
   var totalCookies = 0;
   for(var i = 0; i < tableHeader.length; i++)
   {
-    if(i !== tableHeader.length)
+    if(i !== tableHeader.length - 1)
     {
       numOfCookiesProjection[i] = this.randomCookiesNum();
       totalCookies += numOfCookiesProjection[i];
