@@ -1,0 +1,15 @@
+/* A specified standard san-serif web font for data (such as Arial, Verdana, or Helvetica) */
+/* A specified standard serif web font for text (such as Georgia, Times, etc.) */
+
+
+
+html, body {
+  background-color: #ebeced;
+
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
