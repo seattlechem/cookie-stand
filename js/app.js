@@ -40,14 +40,16 @@ Store.prototype.storeRandomNumCookiesIntoArray = function(){
       numOfCookiesProjection[i] = totalCookies;
     }
   }
+  return numOfCookiesProjection;
 };
 
 //render() method for table
 Store.prototype.render = function(){
-  for(var i = 0; i === tableHeader.length; i++)
-  {
-    //create tr
-    var trEl = document.createElement('tr');
+  //create tr
+  var trEl = document.createElement('tr');
+
+  for(var i = 0; i < tableHeader.length + 1; i++)
+  { 
     //create td
     var tdEl = document.createElement('td');
     if(i === 0)
@@ -56,29 +58,37 @@ Store.prototype.render = function(){
     }
     else
     {
-      tdEl.textContent = this.storeRandomNumCookiesIntoArray.numOfCookiesProjection[i - 1];
+      tdEl.textContent = this.storeRandomNumCookiesIntoArray()[i - 1];
     }
 
     //append td to tr
     trEl.appendChild(tdEl);
-    //append tr to table
-    dataTable.appendChild(trEl);
+    
   }
+  //append tr to table
+  dataTable.appendChild(trEl);
 };
 
 //makeAHeaderRow function
 function makeAHeaderRow(){
-  for(var i = 0; i < tableHeader.length; i++)
-  {
-    var trEl = document.createElement('tr');
-    var tdEl = document.createElement('td');
-  
-    tdEl.textContent = tableHeader[i];
-    trEl.appendChild(tdEl);
-    dataTable.appendChild(trEl);
+  var trEl = document.createElement('tr');
 
+  for(var i = 0; i < tableHeader.length + 1; i++)
+  {
+    
+    var tdEl = document.createElement('td');
+    if(i === 0){
+      tdEl.textContent = '';
+    }
+    else{
+      tdEl.textContent = tableHeader[i - 1];
+    }
+
+    trEl.appendChild(tdEl);
+    
   }
-  
+  dataTable.appendChild(trEl);
+
 }
 
 //create store instances
@@ -92,7 +102,7 @@ new Store('Alki', 2, 16, 4.6);
 //for loop for each store object
 function createTable(){
 
-  for(var i = 0; i === stores.length; i++)
+  for(var i = 0; i < stores.length + 1; i++)
   {
     console.log('entering if statement');
     if(i === 0)
