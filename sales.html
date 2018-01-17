@@ -20,6 +20,36 @@
   <section>
     <div class="dataContainer">
       <table id="dataTable"></table>
+      <form id = "formStore">
+        <fieldset>
+          <legend>Add a New Store</legend>
+
+          <div class="inputLabelContainer">
+            <label for="formName">Name: </label>
+            <input type="text" name="formName" required minlength="2">
+          </div>
+          
+          <div class="inputLabelContainer">
+          <label for="formMinCustPerHour">Minimum Customer Per Hour: </label>
+          <input type="number" name="formMinCustPerHour" required minlength="1">
+          </div>
+
+          <div class="inputLabelContainer">
+          <label for="formMaxCustPerHour">Maximum Customer Per Hour: </label>
+          <input type="number" name="formMaxCustPerHour" required minlength="1">
+          </div>
+
+          <div class="inputLabelContainer">
+          <label for="formAvgCookiesSales">Average Ciookies Sales: </label>
+          <input type="number" name="formAvgCookiesSales" required minlength="1">
+          </div>
+
+          <div class="inputLabelContainer">
+          <button id = "addStore">Add</button>
+          </div>
+
+        </fieldset>
+      </form>
     </div>  
     
       

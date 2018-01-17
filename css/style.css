@@ -77,3 +77,34 @@ table th {
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+
+form {
+  /* border: 1px solid black; */
+  width: 63%;
+  margin-top: 20px;
+}
+
+fieldset {
+  border: solid;
+}
+
+legend { 
+  display: block;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: 20px;
+  font-size: 1.5em;
+  /* border: solid; */
+}
+
+label {
+  margin-left: 10px;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+button {
+  margin-left: 10px;
+}
