@@ -149,8 +149,6 @@ function addNewStore(event){
   var objEl = [];
   for (var i = 0; i < formEl.length; i++){
     var x = event.target[formEl[i]].value;
-    console.dir(event.target[formEl[i]]);
-    console.log(x)
     objEl.push(x);
   }
 
@@ -161,14 +159,9 @@ function addNewStore(event){
   formStore.reset();
   createTable();
   createTotalsRow();
-
 }
 
 formStore.addEventListener('submit', addNewStore);
-
-
-
-
 
 createTable();
 createTotalsRow();
