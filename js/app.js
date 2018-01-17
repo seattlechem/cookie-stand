@@ -5,6 +5,7 @@ var tableHeader = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am',
 // store table element as variable
 var dataTable = document.getElementById('dataTable');
 var stores = [];
+var formStore = document.getElementById('formStore');
 
 //constructor to make store objects
 function Store(name, minCustPerHour, maxCustPerHour, avgCookieSales){
@@ -140,6 +141,32 @@ function createTotalsRow(){
 
   return totals;
 }
+
+//event
+function addNewStore(event){
+  event.preventDefault();
+  var formEl = ['formName', 'formMinCustPerHour', 'formMaxCustPerHour', 'formAvgCookiesSales'];
+  var objEl = [];
+  for (var i = 0; i < formEl.length; i++){
+    var x = event.target[formEl[i]].value;
+    console.dir(event.target[formEl[i]]);
+    console.log(x)
+    objEl.push(x);
+  }
+
+  //create a new store object
+  new Store(objEl[0], objEl[1], objEl[2], objEl[3]);
+
+  dataTable.innerHTML = '';
+  formStore.reset();
+  createTable();
+  createTotalsRow();
+
+}
+
+formStore.addEventListener('submit', addNewStore);
+
+
 
 
 
