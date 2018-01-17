@@ -5,7 +5,6 @@ var tableHeader = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am',
 // store table element as variable
 var dataTable = document.getElementById('dataTable');
 var stores = [];
-console.log(stores);
 
 //constructor to make store objects
 function Store(name, minCustPerHour, maxCustPerHour, avgCookieSales){
@@ -13,8 +12,8 @@ function Store(name, minCustPerHour, maxCustPerHour, avgCookieSales){
   this.minCustPerHour = minCustPerHour;
   this.maxCustPerHour = maxCustPerHour;
   this.avgCookieSales = avgCookieSales;
+  this.numOfCookiesProjection = [];
   stores.push(this);
-
 }
 
 //calculate random number of cookies
@@ -24,46 +23,39 @@ Store.prototype.randomCookiesNum = function(){
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-//store calcuated random num of cookies into array
+//function of storing calcuated random num of cookies into array
 Store.prototype.storeRandomNumCookiesIntoArray = function(){
-  var numOfCookiesProjection = [];
   var totalCookies = 0;
-  for(var i = 0; i < tableHeader.length; i++)
-  {
-    if(i !== tableHeader.length - 1)
-    {
-      numOfCookiesProjection[i] = this.randomCookiesNum();
-      totalCookies += numOfCookiesProjection[i];
+  for(var i = 0; i < tableHeader.length; i++){
+    if(i !== tableHeader.length - 1){
+      this.numOfCookiesProjection[i] = this.randomCookiesNum();
+      totalCookies += this.numOfCookiesProjection[i];
     }
-    else
-    {
-      numOfCookiesProjection[i] = totalCookies;
+    else{
+      this.numOfCookiesProjection[i] = totalCookies;
     }
   }
-  return numOfCookiesProjection;
+  return this.numOfCookiesProjection;
 };
 
 //render() method for table
 Store.prototype.render = function(){
   //create tr
+  this.storeRandomNumCookiesIntoArray();
   var trEl = document.createElement('tr');
 
-  for(var i = 0; i < tableHeader.length + 1; i++)
-  { 
+  for(var i = 0; i < tableHeader.length + 1; i++){
     //create td
     var tdEl = document.createElement('td');
-    if(i === 0)
-    {
+    if(i === 0){
       tdEl.textContent = this.name;
     }
-    else
-    {
-      tdEl.textContent = this.storeRandomNumCookiesIntoArray()[i - 1];
+    else{
+      tdEl.textContent = this.numOfCookiesProjection[i - 1];
     }
 
     //append td to tr
     trEl.appendChild(tdEl);
-    
   }
   //append tr to table
   dataTable.appendChild(trEl);
@@ -73,19 +65,17 @@ Store.prototype.render = function(){
 function makeAHeaderRow(){
   var trEl = document.createElement('tr');
 
-  for(var i = 0; i < tableHeader.length + 1; i++)
-  {
-    
-    var tdEl = document.createElement('td');
+  for(var i = 0; i < tableHeader.length + 1; i++){
+    var thEl = document.createElement('th');
     if(i === 0){
-      tdEl.textContent = '';
+      thEl.textContent = '';
     }
     else{
-      tdEl.textContent = tableHeader[i - 1];
+      thEl.textContent = tableHeader[i - 1];
     }
 
-    trEl.appendChild(tdEl);
-    
+    trEl.appendChild(thEl);
+
   }
   dataTable.appendChild(trEl);
 
@@ -101,20 +91,57 @@ new Store('Alki', 2, 16, 4.6);
 
 //for loop for each store object
 function createTable(){
+  var captionEl = document.createElement('caption');
+  captionEl.textContent = 'Hourly Cookies Sales';
+  dataTable.appendChild(captionEl);
 
   for(var i = 0; i < stores.length + 1; i++)
   {
     console.log('entering if statement');
-    if(i === 0)
-    {
+    if(i === 0){
       makeAHeaderRow();
       console.log('header is created');
     }
-    else
-    {
+    else{
       stores[i - 1].render();
     }
   }
 }
 
+function createTotalsRow(){
+  var totals = [];
+  for(var z = 0; z < tableHeader.length; z++){
+    var sum = 0;
+    for(var i = 0; i < stores.length; i++){
+      sum += stores[i].numOfCookiesProjection[z];
+    }
+    totals.push(sum);
+  }
+
+  //create tr
+  var trEl = document.createElement('tr');
+
+  for(i = 0; i < totals.length + 1; i++){
+    //create td
+    var tdEl = document.createElement('td');
+    if(i === 0){
+      tdEl.textContent = 'Totals';
+    }
+    else{
+      tdEl.textContent = totals[i - 1];
+    }
+
+    //append td to tr
+    trEl.appendChild(tdEl);
+
+  }
+  //append tr to table
+  dataTable.appendChild(trEl);
+
+  return totals;
+}
+
+
+
 createTable();
+createTotalsRow();
