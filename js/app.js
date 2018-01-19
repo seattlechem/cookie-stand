@@ -147,13 +147,29 @@ function addNewStore(event){
   event.preventDefault();
   var formEl = ['formName', 'formMinCustPerHour', 'formMaxCustPerHour', 'formAvgCookiesSales'];
   var objEl = [];
-  for (var i = 0; i < formEl.length; i++){
-    var x = event.target[formEl[i]].value;
+  // for (var i = 0; i < formEl.length; i++){
+  for(var i in formEl){
+    var x = (event.target[formEl[i]].value);
     objEl.push(x);
   }
 
-  //create a new store object
-  new Store(objEl[0], objEl[1], objEl[2], objEl[3]);
+  for (var z = 0; z < stores.length; z++){
+    console.log('entering for loop for name check ' + z);
+    if (stores[z].name === objEl[0]){
+      //do change data
+      console.log('if statement for name matching');
+      stores[z].minCustPerHour = parseInt(objEl[1]);
+      stores[z].maxCustPerHour = parseInt(objEl[2]);
+      stores[z].avgCookieSales = parseInt(objEl[3]);
+      break;
+    }
+  }
+  //if loop reaches to the end and no name matching was found
+  //then create a new object
+
+  if(z === stores.length){
+    new Store(objEl[0], parseInt(objEl[1]), parseInt(objEl[2]), parseInt(objEl[3]));
+  }
 
   dataTable.innerHTML = '';
   formStore.reset();
@@ -162,6 +178,7 @@ function addNewStore(event){
 }
 
 formStore.addEventListener('submit', addNewStore);
+
 
 createTable();
 createTotalsRow();
