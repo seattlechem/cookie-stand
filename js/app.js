@@ -149,11 +149,33 @@ function addNewStore(event){
   var objEl = [];
   // for (var i = 0; i < formEl.length; i++){
   for(var i in formEl){
-    objEl.push(event.target[formEl[i]].value);
+    var x = (event.target[formEl[i]].value);
+    console.log(typeof(x));
+    objEl.push(x);
   }
 
+  for (var z = 0; z < stores.length; z++){
+    if(stores[z].name === objEl[0]){
+      //do change data
+      console.log('if statement for name matching');
+      stores[z].minCustPerHour = parseInt(objEl[1]);
+      stores[z].maxCustPerHour = parseInt(objEl[2]);
+      stores[z].avgCookieSales = parseInt(objEl[3]);
+      console.log('obj ' + objEl[0]);
+      break ;
+    }
+    else{
+      //create a new store object
+      console.log('creating an if object');
+      new Store(objEl[0], parseInt(objEl[1]), parseInt(objEl[2]), parseInt(objEl[3]));
+      console.log(objEl[0]);
+      console.log(stores);
+      break;
+    }
+  }
+  
   //create a new store object
-  new Store(objEl[0], objEl[1], objEl[2], objEl[3]);
+  
 
   dataTable.innerHTML = '';
   formStore.reset();
@@ -162,6 +184,7 @@ function addNewStore(event){
 }
 
 formStore.addEventListener('submit', addNewStore);
+
 
 createTable();
 createTotalsRow();
