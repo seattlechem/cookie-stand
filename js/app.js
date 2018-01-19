@@ -150,32 +150,26 @@ function addNewStore(event){
   // for (var i = 0; i < formEl.length; i++){
   for(var i in formEl){
     var x = (event.target[formEl[i]].value);
-    console.log(typeof(x));
     objEl.push(x);
   }
 
   for (var z = 0; z < stores.length; z++){
-    if(stores[z].name === objEl[0]){
+    console.log('entering for loop for name check ' + z);
+    if (stores[z].name === objEl[0]){
       //do change data
       console.log('if statement for name matching');
       stores[z].minCustPerHour = parseInt(objEl[1]);
       stores[z].maxCustPerHour = parseInt(objEl[2]);
       stores[z].avgCookieSales = parseInt(objEl[3]);
-      console.log('obj ' + objEl[0]);
-      break ;
-    }
-    else{
-      //create a new store object
-      console.log('creating an if object');
-      new Store(objEl[0], parseInt(objEl[1]), parseInt(objEl[2]), parseInt(objEl[3]));
-      console.log(objEl[0]);
-      console.log(stores);
       break;
     }
   }
-  
-  //create a new store object
-  
+  //if loop reaches to the end and no name matching was found
+  //then create a new object
+
+  if(z === stores.length){
+    new Store(objEl[0], parseInt(objEl[1]), parseInt(objEl[2]), parseInt(objEl[3]));
+  }
 
   dataTable.innerHTML = '';
   formStore.reset();
