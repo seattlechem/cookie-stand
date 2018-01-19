@@ -147,9 +147,9 @@ function addNewStore(event){
   event.preventDefault();
   var formEl = ['formName', 'formMinCustPerHour', 'formMaxCustPerHour', 'formAvgCookiesSales'];
   var objEl = [];
-  for (var i = 0; i < formEl.length; i++){
-    var x = event.target[formEl[i]].value;
-    objEl.push(x);
+  // for (var i = 0; i < formEl.length; i++){
+  for(var i in formEl){
+    objEl.push(event.target[formEl[i]].value);
   }
 
   //create a new store object

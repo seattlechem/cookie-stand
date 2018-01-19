@@ -18,40 +18,54 @@
     </ul>
   </nav>
   <section>
-    <div class="dataContainer">
-      <table id="dataTable"></table>
-      <form id = "formStore">
-        <fieldset>
-          <legend>Add a New Store</legend>
+    <table id="dataTable"></table>
+    <form id = "formStore">
+      <fieldset>
+        <legend>Add a New Store</legend>
 
-          <div class="inputLabelContainer">
-            <label for="formName">Name: </label>
-            <input type="text" name="formName" required minlength="2">
-          </div>
-          
-          <div class="inputLabelContainer">
-          <label for="formMinCustPerHour">Minimum Customer Per Hour: </label>
-          <input type="number" name="formMinCustPerHour" step = "0.01" required minlength="1">
-          </div>
+        <label for="formName">Name: </label>
+        <input type="text" name="formName" required minlength="2">
 
-          <div class="inputLabelContainer">
-          <label for="formMaxCustPerHour">Maximum Customer Per Hour: </label>
-          <input type="number" name="formMaxCustPerHour" step = "0.01" required minlength="1">
-          </div>
+        <label for="formMinCustPerHour">Minimum Customer Per Hour: </label>
+        <input type="number" name="formMinCustPerHour" step = "0.01" required minlength="1">
+      
+        <label for="formMaxCustPerHour">Maximum Customer Per Hour: </label>
+        <input type="number" name="formMaxCustPerHour" step = "0.01" required minlength="1">
 
-          <div class="inputLabelContainer">
-          <label for="formAvgCookiesSales">Average Ciookies Sales: </label>
-          <input type="number" name="formAvgCookiesSales" step = "0.01" required minlength="1">
-          </div>
-
-          <div class="inputLabelContainer">
+        <label for="formAvgCookiesSales">Average Cookies Sales: </label>
+        <input type="number" name="formAvgCookiesSales" step = "0.01" required minlength="1">
+        
+        <div id = "divButton">
           <button id = "addStore">Add</button>
           <button type = "reset"  id = "resetBtn">Reset</button>
-          </div>
+        </div>
+      
+      </fieldset>
+    </form>
 
+    <form id = "formStore">
+        <fieldset>
+          <legend>Edit Store Data</legend>
+  
+          <label for="formName">Name: </label>
+          <input type="text" name="formName" required minlength="2">
+  
+          <label for="formMinCustPerHour">Minimum Customer Per Hour: </label>
+          <input type="number" name="formMinCustPerHour" step = "0.01" required minlength="1">
+        
+          <label for="formMaxCustPerHour">Maximum Customer Per Hour: </label>
+          <input type="number" name="formMaxCustPerHour" step = "0.01" required minlength="1">
+  
+          <label for="formAvgCookiesSales">Average Cookies Sales: </label>
+          <input type="number" name="formAvgCookiesSales" step = "0.01" required minlength="1">
+          
+          <div id = "divButton">
+            <button id = "editStore">Edit</button>
+            <button type = "reset"  id = "resetBtn">Reset</button>
+          </div>
+        
         </fieldset>
       </form>
-    </div>  
     
       
   </section>
